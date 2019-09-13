@@ -1,0 +1,10 @@
+const express = require('express');
+const config = require('../config/config.json');
+let router = express.Router();
+let controller = require('../controllers/index');
+router.get("/",controller.index);
+router.get("/getAllTast",controller.listTask);
+router.put("/deleteTask/:id",controller.deleteTask);
+router.post("/addTask",controller.addTask);
+router.put("/updateTask",controller.updateTask);
+module.exports = router ;

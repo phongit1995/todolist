@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>To List Nguyễn đình Phong</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>  
+    <script src="javascripts/task.js"></script>
+</head>
+<body>
+    <div class="container mt-2">
+            <div class="header text-center"> To Do By List Nguyen Dinh Phong with Nodejs</div>
+        <div class="row"> 
+            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6" style="margin: 10px auto">
+                <form action="/addtask" method="post" onsubmit="return mySubmitFunction(event)">
+                        <div class="addtask">
+                                <div class="form-group">
+                                  <label >Thêm Công việc</label>
+                                  <input type="text" class="form-control" name="taskname" id="name" aria-describedby="helpId" placeholder="Nhập tên công việc">
+                                   
+                                </div>
+                                <div class="status">
+                                    <div >Trạng Thái 
+                                      
+                                    </div>
+                                    <div style="font-size: 15px"> 
+                                            <input type="radio" name="status" value="1" checked> Hoàn thành  <br>
+                                            <input type="radio" name="status" value="0"> Chưa hoàn thành 
+                                    </div>
+                                 </div>
+                        </div>
+                        <button type="submit" name="" id="" class="btn btn-primary" btn-lg btn-block" style="    margin-top: 10px;">Add Task</button>
+                </form>
+                <div class="mt-3">
+                    <h1 class="text-center">Danh Sách Công Việc</h1>
+                    <div class="updatetask">
+                       
+                    </div>
+                    <table class="table" style="margin-top: 10px;">
+                        <thead>
+                            <tr class="text-center">
+                                <th>ID</th>
+                                <th>Tên Công Việc</th>
+                                <th>Trạng Thái</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody class="content-list-tasks">
+                        <%
+                        tasks.forEach((task,index)=>{ %>
+                            <tr class="text-center">
+                                <td scope="row"> <%=index+1 %></td>
+                                <td> <%=task.dataValues.task_name%></td>
+                                <td> <%if(task.dataValues.status==true){%> Hoàn  Thành <%} else{%> Chưa Hoàn Thành <%}%> </td>
+                                <td> <button type="button" class="btn btn-warning" onclick="showPopup('<%=task.dataValues.task_name%>',<%=task.dataValues.status%>,<%=task.dataValues.id_tasks%>)" >Sửa</button> <button type="button" class="btn btn-danger" onclick="DelteTask(<%=task.dataValues.id_tasks%>)">Xóa</button></td>
+                            </tr>
+                         <% })
+                        %>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</body>
+</html>
+<style>
+    .header{
+        font-size: 36px;
+        margin-top: 20px;
+        margin-bottom: 10px;
+        text-align: center;
+}
+.addtask{
+    font-size: 30px;
+}.status{
+    font-size: 20px;
+}
+</style>

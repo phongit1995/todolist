@@ -1,0 +1,18 @@
+{
+    "databases":{
+        "username":"root",
+        "password":null,
+        "database":"todo",
+        "host":"127.0.0.1",
+        "dialect":"mysql"
+    
+    },
+    "database":{
+        "username":"7Jc3v3fIir",
+        "password":"0EA4llAeXq",
+        "database":"7Jc3v3fIir",
+        "host":"remotemysql.com",
+        "dialect":"mysql",
+        "port":"3306"
+    }
+}
